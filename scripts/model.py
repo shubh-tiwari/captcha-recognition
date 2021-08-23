@@ -10,8 +10,8 @@ class CaptchaBase(nn.Module):
         batch_size = list(y_pred.size())[0]
         input_size = list(y_pred.size())[1]
         label_size = list(y_pred.size())[1]
-        input_length = torch.full(size=(batch_size,), fill_value=input_size, dtype="int64")
-        target_length = torch.full(size=(batch_size,), fill_value=50, dtype="int64")
+        input_length = torch.full(size=(batch_size,), fill_value=1, dtype="int64")
+        target_length = torch.full(size=(batch_size,), fill_value=1, dtype="int64")
         loss = ctc_loss(y_true, y_pred, input_length, target_length)
         return loss
     
